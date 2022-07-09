@@ -11,7 +11,7 @@ class page_see:
         # on créeeeeeez la fenetre tkinter
         self.fenetre = tk.Toplevel()
         self.fenetre.geometry("800x400")
-        self.fenetre.title("Zelda Encyclopedia - Search")
+        self.fenetre.title("Zelda Encyclopedia - "+self.name)
         self.fenetre.resizable(width=True, height=True)
         self.fenetre.config(bg=self.color)
 
@@ -111,7 +111,8 @@ class page_see:
                 for y in range(len(locations)):
                     locations_text += locations[y]
                     locations_text += ", "
-
+                
+                drops_text = ""
                 for y in range(len(drops)):
                     drops_text += drops[y]
                     drops_text += ", "
@@ -144,7 +145,10 @@ class page_see:
                 
                 
             else:
-                locations = list(data["common_locations"])
+                if data["common_locations"] != None:
+                    locations = list(data["common_locations"])
+                else:
+                    locations = []
                 locations_text = ""
                 url_image = data["image"]
                 drops = list(data["drops"])
